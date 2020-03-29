@@ -1,3 +1,4 @@
+require 'pry'
 class Application
 
   @@items = ["Apples","Carrots","Pears"]
@@ -17,7 +18,7 @@ class Application
     elsif req.path.match(/cart/)
       (@@cart == []) ? (resp.write "Your cart is empty") : (@@cart.each { |item| resp.write "#{item}\n"})
     elsif req.path.match(/add/)
-      add_item = req.params["q"]
+      add_item = req.params["item"]
       if @@items.include?(add_item) 
         @@cart << add_item
         resp.write "added #{add_item}"
